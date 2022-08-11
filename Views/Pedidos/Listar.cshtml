@@ -1,0 +1,48 @@
+﻿@model List<PedidoCliente>
+@{
+    ViewData["Title"] = "Listar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    //ViewBag.pizza
+}
+
+
+<div class="d-flex justify-content-between align-items-center">
+    <div class="p-2">
+        <h1>Tus pedidos</h1>
+    </div>
+    <div class="p-2">
+        <a asp-controller="Pedidos" asp-action="GuardarForm" class="btn btn-primary" style="background-color: #FF7F11; border-color: #FF7F11;">Hacer un pedido</a>
+    </div>
+</div>
+<br />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">N° Pedido</th>
+            <th scope="col">Dirección</th>
+            <th scope="col">Teléfono</th>
+            <th scope="col">Pizza</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Direccion</td>
+            <td>@item.Telefono</td>
+            <td>@item.PizzaId</td>
+            <td>
+                <a asp-action="EditarPedido" asp-controller="Pedidos" class="btn btn-info" asp-route-id="@item.Id">Editar</a>
+                <a asp-action="EliminarPedido" asp-controller="Pedidos" class="btn btn-danger" asp-route-id="@item.Id">Borrar</a>
+            </td>
+
+        </tr>
+        }
+    </tbody>
+</table>
+
+
+

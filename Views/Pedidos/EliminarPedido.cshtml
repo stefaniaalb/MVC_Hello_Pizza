@@ -1,0 +1,25 @@
+﻿@model PedidoCliente
+@{
+    ViewData["Title"] = "EliminarPedido";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Eliminar</h1>
+
+<div class="card">
+    <div class="card-header">Eliminar pedido</div>
+    <div class="card-body">
+        <form asp-action="EliminarPedido" asp-controller="Pedidos" method="post">
+            <input asp-for="Id" type="hidden" class="form-control" />
+
+           <div class="alert alert-danger" role="alert">
+               ¿Desea eliminar el pedido n: @Html.DisplayTextFor(m => m.Id)?
+           </div>
+
+      
+            <button type="submit" class="btn btn-primary" style="background-color: #FF7F11; border-color: #FF7F11;">Eliminar</button>
+            <a asp-action="Listar" asp-controller="Pedidos" class="btn btn-secondary">Cancelar</a>
+        </form>
+
+    </div>
+</div>

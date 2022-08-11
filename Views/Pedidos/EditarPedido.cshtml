@@ -1,0 +1,46 @@
+﻿@model PedidoCliente
+@{
+    ViewData["Title"] = "EditarPedido";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>EditarPedido</h1>
+
+<div class="card">
+    <div class="card-header">
+        Hacer un pedido
+    </div>
+    <div class="card-body">
+
+        <form asp-action="EditarPedido" asp-controller="Pedidos" method="post">
+            <input asp-for="Id" type="hidden" class="form-control" />
+
+            <div class="mb-3">
+                <label class="form-label">Direccion</label>
+                <input asp-for="Direccion" class="form-control" type="text">
+                <span asp-validation-for="Direccion" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Telefono</label>
+                <input asp-for="Telefono" class="form-control" type="text">
+                <span asp-validation-for="Telefono" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Seleccione una pizza</label>
+                <select asp-for="PizzaId">
+                    <option disabled>Seleccione una pizza</option>
+                    @foreach (var item in ViewBag.pizzas)
+                    {
+                        <option value="@item.Id">@item.Nombre</option>
+                    }
+                </select>
+                <span asp-validation-for="PizzaId" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary" style="background-color: #FF7F11; border-color: #FF7F11;">Guardar</button>
+            <a asp-action="Listar" asp-controller="Pedidos" class="btn btn-secondary">Cancelar</a>
+        </form>
+
+    </div>
+</div>
