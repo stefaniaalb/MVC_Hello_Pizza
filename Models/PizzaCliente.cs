@@ -13,6 +13,15 @@ namespace MVC_Pizzeria.Models
         public string Descripcion { get; set; }
         public int Precio { get; set; }
         public string Imagen { get; set; }
+
+        //public PizzaCliente(int id, string nombre, string descripcion, int precio, string imagenUrl)
+        //{
+        //    this.Id = id;
+        //    this.Nombre = nombre;
+        //    this.Descripcion = descripcion;
+        //    this.Precio = precio;
+        //    this.Imagen = imagenUrl;
+        //}
         
     
     }

@@ -14,7 +14,7 @@ namespace MVC_Pizzeria.Models
         [Required(ErrorMessage = "El campo telefono es obligatorio")]
         public string Telefono { get; set; }
         [Required(ErrorMessage = "Debe seleccionar una pizza")]
-        public int PizzaId { get; set; }
+        public PizzaCliente Pizza { get; set; }
 
 
 

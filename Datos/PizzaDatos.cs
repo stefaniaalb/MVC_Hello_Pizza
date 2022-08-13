@@ -33,7 +33,7 @@ namespace MVC_Pizzeria.Datos
                             Descripcion = dr["descripcion"].ToString(),
                             Precio = Convert.ToInt32(dr["precio"]),
                             Imagen = dr["imagenUrl"].ToString()
-                        }); ;
+                        }); 
                     }
                 }
                 conexion.Close();

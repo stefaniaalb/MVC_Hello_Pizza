@@ -29,14 +29,14 @@
 
             <div class="mb-3">
                 <label class="form-label">Seleccione una pizza</label>
-                <select asp-for="PizzaId">
+                <select asp-for="Pizza.Id">
                     <option disabled>Seleccione una pizza</option>
                     @foreach (var item in ViewBag.pizzas)
                     {
                         <option value="@item.Id">@item.Nombre</option>
                     }
                 </select>
-                <span asp-validation-for="PizzaId" class="text-danger"></span>
+                <span asp-validation-for="Pizza.Id" class="text-danger"></span>
             </div>
             <button type="submit" class="btn btn-primary" style="background-color: #FF7F11; border-color: #FF7F11;">Guardar</button>
             <a asp-action="Listar" asp-controller="Pedidos" class="btn btn-secondary">Cancelar</a>

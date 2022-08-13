@@ -31,7 +31,14 @@ namespace MVC_Pizzeria.Datos
                             Id = Convert.ToInt32(dr["id"]),
                             Direccion = dr["direccion"].ToString(),
                             Telefono = dr["telefono"].ToString(),
-                            PizzaId = Convert.ToInt32(dr["pizzaId"]),
+                            Pizza = new PizzaCliente()
+                            {
+                                Id = Convert.ToInt32(dr["id"]),
+                                Nombre = dr["nombre"].ToString(),
+                                Descripcion = dr["descripcion"].ToString(),
+                                Precio = Convert.ToInt32(dr["precio"]),
+                                Imagen = dr["imagenUrl"].ToString()
+                            }
                         });
                     }
                 }
@@ -59,7 +66,14 @@ namespace MVC_Pizzeria.Datos
                         pedido.Id = Convert.ToInt32(reader["id"]);
                         pedido.Direccion = reader["direccion"].ToString();
                         pedido.Telefono = reader["telefono"].ToString();
-                        pedido.PizzaId = Convert.ToInt32(reader["pizzaId"]);
+                        pedido.Pizza = new PizzaCliente()
+                        {
+                            Id = Convert.ToInt32(reader["id"]),
+                            Nombre = reader["nombre"].ToString(),
+                            Descripcion = reader["descripcion"].ToString(),
+                            Precio = Convert.ToInt32(reader["precio"]),
+                            Imagen = reader["imagenUrl"].ToString()
+                        };
 
 
                     }
@@ -84,7 +98,7 @@ namespace MVC_Pizzeria.Datos
                     SqlCommand cmd = new SqlCommand("agregarPedido", conexion);
                     cmd.Parameters.AddWithValue("direccion", pedido.Direccion);
                     cmd.Parameters.AddWithValue("telefono", pedido.Telefono);
-                    cmd.Parameters.AddWithValue("pizzaId", pedido.PizzaId);
+                    cmd.Parameters.AddWithValue("pizzaId", pedido.Pizza.Id);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.ExecuteNonQuery();
                     conexion.Close();
@@ -116,7 +130,7 @@ namespace MVC_Pizzeria.Datos
                     cmd.Parameters.AddWithValue("id", pedido.Id);
                     cmd.Parameters.AddWithValue("direccion", pedido.Direccion);
                     cmd.Parameters.AddWithValue("telefono", pedido.Telefono);
-                    cmd.Parameters.AddWithValue("pizzaId", pedido.PizzaId);
+                    cmd.Parameters.AddWithValue("pizzaId", pedido.Pizza.Id);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.ExecuteNonQuery();
                     conexion.Close();
